@@ -4,10 +4,6 @@ import {
   Route
 } from "react-router-dom";
 
-import Header from "./components/shared/Header/Header";
-
-import Footer from "./components/shared/Footer/Footer";
-
 /**
  * Pages
  */
@@ -25,9 +21,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/produtos">
-          <Header />
           <Products />
-          <Footer />
         </Route>
       </Switch>
     </Router>

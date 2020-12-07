@@ -6,7 +6,7 @@ class Cart extends Component {
     render() {
         return (
             <CartTag>
-                <span className="count">1</span>
+                <span className="count">{this.props.cartItems.length}</span>
                 <FontAwesomeIcon icon="shopping-cart" className="icon" />
             </CartTag>
         )
