@@ -1,0 +1,39 @@
+import styled from 'styled-components'
+import Colors from '../../../theme/Colors';
+
+export const FooterTag = styled.footer`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: ${Colors.primary};
+    padding: 15px;
+`;
+
+export const Logo = styled.img`
+    width: 250px;
+`;
+
+export const FooterText = styled.p`
+    font-size: 14x;
+    color: ${Colors.tertiary};
+    margin: 15px 0;
+    text-align: center;
+`;
+
+export const SocialListItems = styled.ul`
+    width: 200px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+`;
+
+export const SvgStyle = {
+    width: '40px',
+    height: '40px',
+}
+
+export const SvgFill = {
+    fill: Colors.tertiary
+}
