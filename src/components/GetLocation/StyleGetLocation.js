@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Colors from '../../theme/Colors';
 import MediaQueries from '../../theme/MediaQueries';
 
-export const BgLocation = styled.main`
+export const StyleGetLocation = styled.main`
     height: 100vh;
     background: url(/images/banner.jpg) no-repeat;
     background-size: cover;
@@ -25,15 +25,16 @@ export const BgLocation = styled.main`
             width: 140px;
             margin-bottom: 20px;
             
-            @media(${MediaQueries.desktop}) {
+            @media(${MediaQueries.desktop.minWidth}) {
                 width: 350px;
             }
         }
 
         &__form {
             width: 100%;
+            margin-top: 20px;
 
-            @media(${MediaQueries.desktop}) {
+            @media(${MediaQueries.desktop.minWidth}) {
                 width: 800px;
                 display: flex;
                 justify-content: space-between;
@@ -51,8 +52,9 @@ export const BgLocation = styled.main`
             margin-top: 20px;
             padding: 0 10px;
 
-            @media(${MediaQueries.desktop}) {
+            @media(${MediaQueries.desktop.minWidth}) {
                 width: 550px;
+                margin-top: 0;
             }
             
             &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -78,8 +80,9 @@ export const BgLocation = styled.main`
             margin-top: 15px;
             border: none;
 
-            @media(${MediaQueries.desktop}) {
+            @media(${MediaQueries.desktop.minWidth}) {
                 width: 200px;
+                margin-top: 0;
             }
             
             &:disabled {

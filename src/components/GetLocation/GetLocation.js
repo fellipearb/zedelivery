@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BgLocation } from './StyleGetLocation';
+import { StyleGetLocation } from './StyleGetLocation';
 import { Redirect } from "react-router-dom";
 
 export class GetLocation extends Component {
@@ -29,14 +29,14 @@ export class GetLocation extends Component {
         }
 
         return (
-            <BgLocation>
+            <StyleGetLocation>
                 <div className="container">
                     <img 
                         src="/images/zedeliverylogo.png"
                         className="container__logo"
                         alt="Zé Delivery de Bebidas"
                     />
-                    Digite seu endereço para localizarmos as melhores ofertas para você:
+                    <p>Digite seu endereço para localizarmos as melhores ofertas para você:</p>
                     <form onSubmit={this.onSubmit} className="container__form">
                         <input 
                             name="location" 
@@ -48,7 +48,7 @@ export class GetLocation extends Component {
                         <button className="container__use-search" disabled={this.state.formIsInvalid}>VER PRODUTOS</button>
                     </form>
                 </div>
-            </BgLocation>
+            </StyleGetLocation>
         )
     }
 }
