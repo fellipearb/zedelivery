@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleGetLocation } from './StyleGetLocation';
 import { Redirect } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class GetLocation extends Component {
     state = {
@@ -33,19 +34,20 @@ export class GetLocation extends Component {
                 <div className="container">
                     <img 
                         src="/images/zedeliverylogo.png"
-                        className="container__logo"
+                        className="logo"
                         alt="Zé Delivery de Bebidas"
                     />
                     <p>Digite seu endereço para localizarmos as melhores ofertas para você:</p>
-                    <form onSubmit={this.onSubmit} className="container__form">
+                    <form onSubmit={this.onSubmit} className="form">
+                        <FontAwesomeIcon icon="map-marker-alt" className="pin-icon" />
                         <input 
                             name="location" 
                             value={this.state.location} 
                             onChange={this.onChangeField}
                             placeholder="Digite aqui seu endereço"
-                            className="container__search-location"
+                            className="search-location"
                         />
-                        <button className="container__use-search" disabled={this.state.formIsInvalid}>VER PRODUTOS</button>
+                        <button className="use-search" disabled={this.state.formIsInvalid}>VER PRODUTOS</button>
                     </form>
                 </div>
             </StyleGetLocation>

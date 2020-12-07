@@ -21,7 +21,7 @@ export const StyleGetLocation = styled.main`
         justify-content: center;
         align-items: center;
 
-        &__logo {
+        .logo {
             width: 140px;
             margin-bottom: 20px;
             
@@ -30,18 +30,29 @@ export const StyleGetLocation = styled.main`
             }
         }
 
-        &__form {
+        .form {
             width: 100%;
-            margin-top: 20px;
+            position: relative;
 
             @media(${MediaQueries.desktop.minWidth}) {
                 width: 800px;
                 display: flex;
                 justify-content: space-between;
+                margin-top: 20px;
+            }
+        }        
+
+        .pin-icon {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+
+            @media(${MediaQueries.desktop.minWidth}) {
+                top: 10px;
             }
         }
 
-        &__search-location {
+        .search-location {
             width: 100%;
             height: 40px;
             font-size: 16px;
@@ -50,7 +61,7 @@ export const StyleGetLocation = styled.main`
             color: ${Colors.tertiary};
             border-radius: 5px;
             margin-top: 20px;
-            padding: 0 10px;
+            padding: 0 10px 0 35px;
 
             @media(${MediaQueries.desktop.minWidth}) {
                 width: 550px;
@@ -71,7 +82,7 @@ export const StyleGetLocation = styled.main`
             }
         }
 
-        &__use-search {
+        .use-search {
             width: 100%;
             padding: 10px 15px;
             background: ${Colors.primary};
