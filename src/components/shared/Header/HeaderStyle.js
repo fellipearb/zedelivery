@@ -8,13 +8,8 @@ export const HeaderTag = styled.header`
     justify-content: center;
     background: ${Colors.primary};
     padding: 15px 0;
-`;
 
-export const Logo = styled.img`
-    width: 150px;
-`;
-
-export const Button = styled.button`
-    border: none;
-    background: none;
+    .logo {
+        width: 150px;
+    }
 `;

@@ -69,6 +69,3 @@ export const BgLocation = styled.main`
         }
     }
 `;
-
-export const Input = styled.input`
-`;
