@@ -14,7 +14,7 @@ export const FooterTag = styled.footer`
     }
 
     .text {
-        font-size: 14x;
+        font-size: 16px;
         color: ${Colors.tertiary};
         margin: 15px 0;
         text-align: center;

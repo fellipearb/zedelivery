@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Colors from '../../theme/Colors';
+import MediaQueries from '../../theme/MediaQueries';
 
 export const BgLocation = styled.main`
     height: 100vh;
@@ -23,10 +24,20 @@ export const BgLocation = styled.main`
         &__logo {
             width: 140px;
             margin-bottom: 20px;
+            
+            @media(${MediaQueries.desktop}) {
+                width: 350px;
+            }
         }
 
         &__form {
             width: 100%;
+
+            @media(${MediaQueries.desktop}) {
+                width: 800px;
+                display: flex;
+                justify-content: space-between;
+            }
         }
 
         &__search-location {
@@ -39,6 +50,10 @@ export const BgLocation = styled.main`
             border-radius: 5px;
             margin-top: 20px;
             padding: 0 10px;
+
+            @media(${MediaQueries.desktop}) {
+                width: 550px;
+            }
             
             &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
                 color: ${Colors.tertiary};
@@ -62,6 +77,10 @@ export const BgLocation = styled.main`
             border-radius: 5px;
             margin-top: 15px;
             border: none;
+
+            @media(${MediaQueries.desktop}) {
+                width: 200px;
+            }
             
             &:disabled {
                 opacity: .6;
