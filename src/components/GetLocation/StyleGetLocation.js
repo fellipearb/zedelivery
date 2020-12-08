@@ -100,5 +100,37 @@ export const StyleGetLocation = styled.main`
                 opacity: .6;
             }
         }
+
+        .autocomplete-dropdown-container {
+            position: absolute;
+            z-index: 1;
+            background: #fff;
+            color: #000;
+            max-height: 40vh;
+            overflow: auto;
+            width: 100%;
+            border-radius: 5px;
+
+            .suggestion-item {
+                font-size: 14px;
+                color: #000;
+                margin: 5px 0;
+                padding: 5px;
+                border-radius: 5px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &--active {
+                    color: ${Colors.tertiary};
+                    background: ${Colors.primary};
+                }
+            }
+        }
     }
 `;
