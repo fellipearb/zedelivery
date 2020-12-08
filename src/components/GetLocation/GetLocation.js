@@ -6,31 +6,37 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 export class GetLocation extends Component {
     state = {
         address: '',
-        location: '',
+        latLng: '',
         formIsInvalid: true
-    }
-
-    onChangeField = e => { 
-        this.setState({ 
-            [e.target.name]: e.target.value,
-            formIsInvalid: !e.target.value.length
-        });
     }
 
     onSubmit = e => {
         e.preventDefault();
-        localStorage.setItem('endereco', this.state.location);
+        localStorage.setItem('endereco', this.state.address);
+        localStorage.setItem('lat', this.state.latLng.lat);
+        localStorage.setItem('lng', this.state.latLng.lng);
         this.setState({ redirect: true });
     }
 
     handleChange = address => {
-        this.setState({ address });
+        this.setState({ 
+            address,
+            formIsInvalid: true
+        });
     };
      
     handleSelect = address => {
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
+            .then(latLng => {
+                console.log('Success', latLng)
+
+                this.setState({ 
+                    address,
+                    latLng,
+                    formIsInvalid: false
+                });
+            })
             .catch(error => console.error('Error', error));
     };
     
@@ -66,8 +72,8 @@ export class GetLocation extends Component {
                                         })}
                                     />
                                     <div className="autocomplete-dropdown-container">
-                                        {loading && <div>Loading...</div>}
-                                        {suggestions.map((suggestion, item) => {
+                                        {loading && <div>Carregando...</div>}
+                                        {!loading && suggestions.map((suggestion, item) => {
                                             const className = suggestion.active
                                                                 ? 'suggestion-item suggestion-item--active'
                                                                 : 'suggestion-item';
