@@ -4,6 +4,9 @@ import {
   Route
 } from "react-router-dom";
 
+import { ApolloProvider } from "react-apollo";
+import ClientService from './services/ClientService';
+
 /**
  * Pages
  */
@@ -14,17 +17,19 @@ import GlobalStyle from './theme/GlobalStyle';
 
 function App() {
   return (
-    <Router>
-      <GlobalStyle />
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/produtos">
-          <Products />
-        </Route>
-      </Switch>
-    </Router>
+    <ApolloProvider client={ClientService}>
+      <Router>
+        <GlobalStyle />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/produtos">
+            <Products />
+          </Route>
+        </Switch>
+      </Router>
+    </ApolloProvider>
   );
 }
 

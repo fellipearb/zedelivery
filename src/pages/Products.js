@@ -1,105 +1,17 @@
 import React, { useState } from 'react';
-import ProductCard from '../components/ProductCard/ProductCard';
-import { ProductPageStyle } from '../theme/ProductPageStyle';
+
+import { Query } from 'react-apollo';
+import LOCATION from '../services/GetProductsLocationQuery';
+
 import Header from "../components/shared/Header/Header";
+
+import ProductList from '../components/ProductList/ProductList';
+
 import Footer from "../components/shared/Footer/Footer";
 
 function Products() {
-    /**
-     * TEMP
-     */
-    let productList = [
-        {
-            id: 1,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-        {
-            id: 2,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-        {
-            id: 3,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-        {
-            id: 4,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-        {
-            id: 5,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-        {
-            id: 6,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-        {
-            id: 7,
-            displayName: 'Skol 269ml',
-            price: {
-                max: 2.19,
-                min: 2.19
-            },
-            images: [
-                "https://courier-images-prod.imgix.net/produc_variant/00008502_8df6cda6-722b-4523-9afd-bb518ec1efb1.jpg"
-            ]
-        },
-    ];
-    /**
-     * -TEMP
-     */
-
-    const [products, setProducts] = useState([]);
-    const [cartItems, setCartItems] = useState([]);
-    
-    productList.map(item => {
-        item.alreadyAdd = false;
-        return item;
-    });
-
-    setProducts(productList);
+    const [ cartItems, setCartItems ] = useState([]);
+    const [ latLng ] = useState({ lat: localStorage.getItem('lat'), lng: localStorage.getItem('lng') });
 
     const addToCart = (card) => {
         card.alreadyAdd = true;
@@ -111,23 +23,26 @@ function Products() {
         setCartItems(cartItems.filter(item => item.id !== card.id))
     }
 
+    const date = new Date(); 
+
     return (
         <>
             <Header cartItems={cartItems} />
-            <ProductPageStyle>
-                <div className="container">
-                    {
-                        products.map(item => {                                
-                            return <ProductCard 
-                                        key={item.id} 
-                                        card={item}
-                                        addToCart={addToCart} 
-                                        removeCart={removeCart}
-                                    />
-                        })
-                    }
-                </div>
-            </ProductPageStyle>
+            <Query query={LOCATION} variables={{
+                "now": date.toISOString(),
+                "algorithm": "NEAREST",
+                "lat": latLng.lat,
+                "long": latLng.lng
+            }}>
+                {({ loading, error, data }) => {
+                    if (loading) return <div>Loading...</div>;
+                    if (error) return <div>Error :(</div>;
+                
+                    return (
+                        <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} />
+                    )
+                }}
+            </Query>
             <Footer />
         </>
     )

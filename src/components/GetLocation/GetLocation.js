@@ -3,9 +3,6 @@ import { StyleGetLocation } from './StyleGetLocation';
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import ClientService from '../../services/ClientService';
-import LOCATION from './GetLocationQuery';
-import { useLazyQuery } from '@apollo/client';
 
 function GetLocation(props) {
     const [ address, setAdress ] = useState('');
@@ -13,15 +10,11 @@ function GetLocation(props) {
     const [ latLng, setlatLng ] = useState({lat: '', lng: ''});
     const [ redirect, setRedirect ] = useState(false);
 
-    const date = new Date();
-
     const onSubmit = e => {
         e.preventDefault();
         localStorage.setItem('endereco', address);
         localStorage.setItem('lat', latLng.lat);
-        localStorage.setItem('lng', latLng.lng);
-
-        searchProducts();
+        localStorage.setItem('lng', latLng.lng);       
 
         setRedirect(true);
     };
@@ -43,38 +36,10 @@ function GetLocation(props) {
             })
             .catch(error => console.error('Error', error));
     };
-    
-    const teste = () => {
-        console.log('teste')
-        return <p>loaded</p>
-    }
-
-    const [
-        searchProducts, 
-        { error, loading, data }
-    ] = useLazyQuery(LOCATION, {
-        "client": ClientService,
-        onCompleted: teste,
-        variables: {
-            "now": date.toISOString(),
-            "algorithm": "NEAREST",
-            "lat": "-23.632919",
-            "long": "-46.699453"
-        }
-    });
-
-    if(loading) return <p>loading</p>;
-    if (data) {
-        return <p>loaded</p>
-    }
-
-    if(error) return <p>error when fetch data</p>;
-
-    console.log('return', loading, error, data)
 
     return (
         <>
-            { 
+            {
                 redirect ? 
                     <Redirect to="produtos" /> 
                 :

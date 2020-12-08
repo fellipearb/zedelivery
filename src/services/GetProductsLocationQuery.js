@@ -1,7 +1,7 @@
-const { gql } = require("@apollo/client");
+import { gql } from "apollo-boost";
 
 const LOCATION = gql`
-query pocSearchMethod($now: DateTime!, $algorithm: String!, $lat: String!, $long: String!) {
+  query pocSearchMethod($now: DateTime!, $algorithm: String!, $lat: String!, $long: String!) {
     pocSearch(now: $now, algorithm: $algorithm, lat: $lat, long: $long) {
       __typename
       id

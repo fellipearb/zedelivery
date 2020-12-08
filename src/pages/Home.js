@@ -3,9 +3,9 @@ import GetLocation from '../components/GetLocation/GetLocation';
 
 function Home() {
     return (
-        <div>
+        <>
             <GetLocation />
-        </div>
+        </>
     )
 }
 
