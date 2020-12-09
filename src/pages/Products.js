@@ -26,6 +26,20 @@ function Products() {
         return;
     }
 
+    const buildProductPage = ({ loading, error, data }) => {
+        if (loading) return <Loading />;
+        if (error) return <EmptyState />;
+        if (!data || !data.pocSearch.length) return <EmptyState />;
+    
+        return (
+            <ProductPageStyle>
+                <div className="container">
+                    <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} />
+                </div>
+            </ProductPageStyle>
+        )
+    }
+
     const date = new Date(); 
 
     return (
@@ -40,17 +54,7 @@ function Products() {
                     "long": latLng.lng
                 }}
             >
-                {({ loading, error, data }) => {
-                    if (loading) return <Loading />;
-                    if (error) return <EmptyState />;
-                    if (!data || !data.pocSearch.length) return <EmptyState />;
-                
-                    return (
-                        <ProductPageStyle>
-                            <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} />
-                        </ProductPageStyle>
-                    )
-                }}
+                { buildProductPage }
             </Query>
             <Footer />
         </>
