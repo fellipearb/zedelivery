@@ -13,12 +13,12 @@ function ProductList(props) {
     const categoryId = props.CategoryId;
 
     const buildProductList = ({ loading, error, data }) => {
-        const { products } = data.poc;
-        
         if (loading) return <Loading />;
         if (error) return <EmptyState />;
-        if (!data || !products.length) return <EmptyState />;
-    
+        if (!data || !data.poc.products.length) return <EmptyState />;
+        
+        const { products } = data.poc;
+        
         return (
             products.map(item => {                                
                 return <ProductCard 
