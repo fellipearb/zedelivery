@@ -29,15 +29,17 @@ function ProductList(props) {
             })
         )
     }
+
+    const paramsQuery = {
+        "id": id,
+        "search": "",
+        categoryId: CategoryId
+    }
     
     return (
         <Query 
             query={PRODUCTS} 
-            variables={{
-                "id": id,
-                "search": "",
-                categoryId: CategoryId
-            }}
+            variables={paramsQuery}
         >
                 { buildProductList }
         </Query>

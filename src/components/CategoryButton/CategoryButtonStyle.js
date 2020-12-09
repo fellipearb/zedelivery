@@ -12,6 +12,7 @@ export const CategoryButtonStyle = styled.button`
     &.active {
         color: #fff;
         background: ${Colors.primary};
+        border-color: ${Colors.primary};
     }
 
     &:hover {
