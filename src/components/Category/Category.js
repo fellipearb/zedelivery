@@ -9,7 +9,7 @@ import CategoryButton from '../CategoryButton/CategoryButton';
 import CategoryStyle from './CategoryStyle';
 
 function Category(props) {
-    const { filterCategory, paramsQuery } = props;
+    const { filterCategory, paramsQuery, CategoryId } = props;
     
     const buildCategories = ({ loading, error, data }) => {
         if (loading) return <Loading />;
@@ -20,11 +20,14 @@ function Category(props) {
 
         return (            
             allCategory.map(category => {
+                const isActive = category.id === CategoryId;
+
                 return  <CategoryButton 
                             label={category.title} 
                             id={category.id} 
                             key={category.id} 
                             filterCategory={filterCategory}
+                            isActive={isActive}
                         />
             })
         )

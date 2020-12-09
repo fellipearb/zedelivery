@@ -9,6 +9,11 @@ export const CategoryButtonStyle = styled.button`
     border-radius: 5px;
     border: 2px solid ${Colors.tertiary};
 
+    &.active {
+        color: #fff;
+        background: ${Colors.primary};
+    }
+
     &:hover {
         background: ${Colors.tertiary};
     }

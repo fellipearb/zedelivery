@@ -13,11 +13,13 @@ import Category from '../components/Category/Category';
 
 function Products() {
     const [ cartItems, setCartItems ] = useState([]);
+    
     const [ latLng ] = useState({ 
         lat: localStorage.getItem('lat'),
         lng: localStorage.getItem('lng')
     });
-    const [ categoryFilter, setCategoryFilter ] = useState(null);
+    
+    const [ CategoryId, setCategoryId ] = useState(null);
 
     const addToCart = (card) => {
         card.alreadyAdd = true;
@@ -32,7 +34,7 @@ function Products() {
     }
 
     const filterCategory = id => {
-        setCategoryFilter(id);
+        setCategoryId(id);
     }
 
     const buildProductPage = ({ loading, error, data }) => {
@@ -43,7 +45,7 @@ function Products() {
         return (
             <ProductPageStyle>
                 <div className="container">
-                    <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} CategoryId={categoryFilter} />
+                    <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} CategoryId={CategoryId} />
                 </div>
             </ProductPageStyle>
         )
@@ -61,7 +63,7 @@ function Products() {
     return (
         <>
             <Header cartItems={cartItems} />
-            <Category paramsQuery={paramsQuery} filterCategory={filterCategory} CategoryId={categoryFilter} />
+            <Category paramsQuery={paramsQuery} filterCategory={filterCategory} CategoryId={CategoryId} />
             <Query 
                 query={LOCATION} 
                 variables={paramsQuery}
