@@ -3,7 +3,6 @@ import { StyleGetLocation } from './StyleGetLocation';
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import Loading from '../Loading/Loading';
 
 function GetLocation(props) {
     const [ address, setAdress ] = useState('');
@@ -47,7 +46,7 @@ function GetLocation(props) {
                 })}
             />
             <div className="autocomplete-dropdown-container">
-                {loading && <Loading />}
+                {loading && <div>Carregando...</div>}
                 {!loading && suggestions.map((suggestion, item) => {
                     const className = suggestion.active
                                         ? 'suggestion-item suggestion-item--active'
