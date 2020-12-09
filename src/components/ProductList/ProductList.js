@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 
 import { Query } from 'react-apollo';

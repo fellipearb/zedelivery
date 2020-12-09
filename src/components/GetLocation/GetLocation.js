@@ -27,9 +27,7 @@ function GetLocation(props) {
     const handleSelect = address => {
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => {
-                console.log('Success', latLng)
-                
+            .then(latLng => {                
                 setAdress(address);
                 setFormIsInvalid(false);
                 setlatLng(latLng);
