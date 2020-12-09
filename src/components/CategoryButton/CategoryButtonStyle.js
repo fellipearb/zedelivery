@@ -13,6 +13,11 @@ export const CategoryButtonStyle = styled.button`
         color: #fff;
         background: ${Colors.primary};
         border-color: ${Colors.primary};
+
+        &:hover {
+            background: ${Colors.primary};
+            border-color: ${Colors.primary};
+        }
     }
 
     &:hover {
