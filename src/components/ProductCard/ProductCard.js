@@ -3,6 +3,7 @@ import { ProductCardStyle } from './ProductCardStyle';
 
 function ProductCard(props) {
     const [card] = useState(props.card);
+    
     card.images[0].url = `${card.images[0].url}?w=200&h=200`;
     card.productVariants[0].price = card.productVariants[0].price.toLocaleString('pt-BR');
 

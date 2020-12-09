@@ -3,6 +3,7 @@ import { StyleGetLocation } from './StyleGetLocation';
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import Loading from '../Loading/Loading';
 
 function GetLocation(props) {
     const [ address, setAdress ] = useState('');
@@ -37,6 +38,35 @@ function GetLocation(props) {
             .catch(error => console.error('Error', error));
     };
 
+    const AutoCompleteCallBack = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        <div>
+            <input
+                {...getInputProps({
+                    placeholder: 'Digite aqui seu endereço',
+                    className: 'search-location',
+                })}
+            />
+            <div className="autocomplete-dropdown-container">
+                {loading && <Loading />}
+                {!loading && suggestions.map((suggestion, item) => {
+                    const className = suggestion.active
+                                        ? 'suggestion-item suggestion-item--active'
+                                        : 'suggestion-item';
+                    return (
+                        <div
+                            {...getSuggestionItemProps(suggestion, {
+                                className
+                            })}
+                            key={suggestion.placeId}
+                        >
+                            {suggestion.description}
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    )
+
     return (
         <>
             {
@@ -58,34 +88,7 @@ function GetLocation(props) {
                                     onChange={handleChange}
                                     onSelect={handleSelect}
                                 >
-                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                                        <div>
-                                            <input
-                                                {...getInputProps({
-                                                    placeholder: 'Digite aqui seu endereço',
-                                                    className: 'search-location',
-                                                })}
-                                            />
-                                            <div className="autocomplete-dropdown-container">
-                                                {loading && <div>Carregando...</div>}
-                                                {!loading && suggestions.map((suggestion, item) => {
-                                                    const className = suggestion.active
-                                                                        ? 'suggestion-item suggestion-item--active'
-                                                                        : 'suggestion-item';
-                                                    return (
-                                                        <div
-                                                            {...getSuggestionItemProps(suggestion, {
-                                                                className
-                                                            })}
-                                                            key={suggestion.placeId}
-                                                        >
-                                                            {suggestion.description}
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-                                        </div>
-                                    )}
+                                    {AutoCompleteCallBack}
                                 </PlacesAutocomplete>
                                 <button className="use-search" disabled={formIsInvalid}>VER PRODUTOS</button>
                             </form>

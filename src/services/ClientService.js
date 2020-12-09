@@ -1,7 +1,8 @@
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 
 const ClientService = new ApolloClient({
-  uri: 'https://api.code-challenge.ze.delivery/public/graphql'  
+  uri: 'https://api.code-challenge.ze.delivery/public/graphql',
+  cache: new InMemoryCache(),
 });
 
 export default ClientService;
