@@ -15,11 +15,13 @@ export const ProductCardStyle = styled.div`
         border: 1px solid ${Colors.tertiary};
         padding: 15px;
         border-radius: 5px;
-    }
 
-    &:hover {
-        .add {
-            display: block;
+        &:hover {
+            border: 2px solid ${Colors.tertiary};
+
+            .add {
+                background: ${Colors.primary};
+            }
         }
     }
 
@@ -52,9 +54,7 @@ export const ProductCardStyle = styled.div`
         color: #fff;
         padding: 10px;
         border-radius: 5px;
-
-        @media(${MediaQueries.desktop.minWidth}) {
-            display: none;
-        }
+        cursor: pointer;
+        transition: background .3s, border .3s;
     }
 `;
