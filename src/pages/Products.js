@@ -12,7 +12,10 @@ import EmptyState from '../components/EmptyState/EmptyState';
 
 function Products() {
     const [ cartItems, setCartItems ] = useState([]);
-    const [ latLng ] = useState({ lat: localStorage.getItem('lat'), lng: localStorage.getItem('lng') });
+    const [ latLng ] = useState({ 
+        lat: localStorage.getItem('lat'),
+        lng: localStorage.getItem('lng')
+    });
 
     const addToCart = (card) => {
         card.alreadyAdd = true;
