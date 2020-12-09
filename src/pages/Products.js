@@ -43,11 +43,14 @@ function Products() {
         if (!data || !data.pocSearch.length) return <EmptyState />;
     
         return (
-            <ProductPageStyle>
-                <div className="container">
-                    <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} CategoryId={CategoryId} />
-                </div>
-            </ProductPageStyle>
+            <>
+                <Category paramsQuery={paramsQuery} filterCategory={filterCategory} CategoryId={CategoryId} />
+                <ProductPageStyle>
+                    <div className="container">
+                        <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} CategoryId={CategoryId} />
+                    </div>
+                </ProductPageStyle>
+            </>
         )
     }
 
@@ -63,7 +66,6 @@ function Products() {
     return (
         <>
             <Header cartItems={cartItems} />
-            <Category paramsQuery={paramsQuery} filterCategory={filterCategory} CategoryId={CategoryId} />
             <Query 
                 query={LOCATION} 
                 variables={paramsQuery}
