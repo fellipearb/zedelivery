@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ProductCardStyle } from './ProductCardStyle';
 
 function ProductCard(props) {
-    const [card] = useState(props.card);
+    const { card, removeCart, addToCart } = props;
     
     card.images[0].url = `${card.images[0].url}?w=200&h=200`;
     card.productVariants[0].price = card.productVariants[0].price.toLocaleString('pt-BR');
@@ -15,9 +15,9 @@ function ProductCard(props) {
                 <span className="price">R$ {card.productVariants[0].price}</span>
                 {
                     card.alreadyAdd ?
-                        <button className="add" onClick={props.removeCart.bind(this, card)}>Remover do carrinho</button>
+                        <button className="add" onClick={removeCart.bind(this, card)}>Remover do carrinho</button>
                     :
-                        <button className="add" onClick={props.addToCart.bind(this, card)}>Adicionar ao carrinho</button>
+                        <button className="add" onClick={addToCart.bind(this, card)}>Adicionar ao carrinho</button>
                 }                        
             </div>
         </ProductCardStyle>

@@ -9,6 +9,8 @@ import CategoryButton from '../CategoryButton/CategoryButton';
 import CategoryStyle from './CategoryStyle';
 
 function Category(props) {
+    const { filterCategory, paramsQuery } = props;
+    
     const buildCategories = ({ loading, error, data }) => {
         if (loading) return <Loading />;
         if (error) return <EmptyState />;
@@ -22,7 +24,7 @@ function Category(props) {
                             label={category.title} 
                             id={category.id} 
                             key={category.id} 
-                            filterCategory={props.filterCategory}
+                            filterCategory={filterCategory}
                         />
             })
         )
@@ -36,7 +38,7 @@ function Category(props) {
                 <div className="categories">
                     <Query 
                         query={CategoryQuery} 
-                        variables={props.paramsQuery}
+                        variables={paramsQuery}
                     >
                         {buildCategories}
                     </Query>

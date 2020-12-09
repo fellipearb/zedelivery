@@ -3,6 +3,8 @@ import Cart from '../../Cart/Cart';
 import { HeaderTag } from './HeaderStyle';
 
 function Header(props) {
+    const { cartItems } = props;
+    
     return (
         <HeaderTag>
             <div className="container">
@@ -11,7 +13,7 @@ function Header(props) {
                     alt="Zé Delivery de Bebidas"
                     className="logo"
                 />
-                <Cart cartItems={props.cartItems} />
+                <Cart cartItems={cartItems} />
             </div>
         </HeaderTag>
     )

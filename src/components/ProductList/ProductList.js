@@ -8,9 +8,8 @@ import EmptyState from '../EmptyState/EmptyState';
 import Loading from '../Loading/Loading';
 
 function ProductList(props) {
-    const [sellData] = useState(props.sellData.pocSearch[0]);
-    const { id } = sellData;
-    const categoryId = props.CategoryId;
+    const { CategoryId, addToCart, removeCart, sellData } = props;
+    const { id } = sellData.pocSearch[0];
 
     const buildProductList = ({ loading, error, data }) => {
         if (loading) return <Loading />;
@@ -24,8 +23,8 @@ function ProductList(props) {
                 return <ProductCard 
                             key={item.id} 
                             card={item}
-                            addToCart={props.addToCart} 
-                            removeCart={props.removeCart}
+                            addToCart={addToCart} 
+                            removeCart={removeCart}
                         />
             })
         )
@@ -37,7 +36,7 @@ function ProductList(props) {
             variables={{
                 "id": id,
                 "search": "",
-                categoryId
+                categoryId: CategoryId
             }}
         >
                 { buildProductList }
