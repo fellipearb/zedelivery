@@ -10,12 +10,14 @@ import Loading from '../Loading/Loading';
 function ProductList(props) {
     const [sellData] = useState(props.sellData.pocSearch[0]);
     const { id } = sellData;
+    const categoryId = props.CategoryId;
 
     const buildProductList = ({ loading, error, data }) => {
+        const { products } = data.poc;
+        
         if (loading) return <Loading />;
         if (error) return <EmptyState />;
-
-        const { products } = data.poc;
+        if (!data || !products.length) return <EmptyState />;
     
         return (
             products.map(item => {                                
@@ -35,7 +37,7 @@ function ProductList(props) {
             variables={{
                 "id": id,
                 "search": "",
-                "categoryId": null
+                categoryId
             }}
         >
                 { buildProductList }

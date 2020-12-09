@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 const PRODUCTS = gql`
-query poc($id: ID!, $categoryId: Int, $search: String){
+  query poc($id: ID!, $categoryId: Int, $search: String){
     poc(id: $id) {
       id
       products(categoryId: $categoryId, search: $search) {

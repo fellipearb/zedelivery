@@ -9,6 +9,7 @@ import { ProductPageStyle } from '../theme/ProductPageStyle';
 import Footer from "../components/shared/Footer/Footer";
 import Loading from '../components/Loading/Loading';
 import EmptyState from '../components/EmptyState/EmptyState';
+import Category from '../components/Category/Category';
 
 function Products() {
     const [ cartItems, setCartItems ] = useState([]);
@@ -16,6 +17,7 @@ function Products() {
         lat: localStorage.getItem('lat'),
         lng: localStorage.getItem('lng')
     });
+    const [ categoryFilter, setCategoryFilter ] = useState(null);
 
     const addToCart = (card) => {
         card.alreadyAdd = true;
@@ -29,6 +31,10 @@ function Products() {
         return;
     }
 
+    const filterCategory = id => {
+        setCategoryFilter(id);
+    }
+
     const buildProductPage = ({ loading, error, data }) => {
         if (loading) return <Loading />;
         if (error) return <EmptyState />;
@@ -37,25 +43,28 @@ function Products() {
         return (
             <ProductPageStyle>
                 <div className="container">
-                    <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} />
+                    <ProductList addToCart={addToCart} removeCart={removeCart} sellData={data} CategoryId={categoryFilter} />
                 </div>
             </ProductPageStyle>
         )
     }
 
-    const date = new Date(); 
+    const date = new Date();
+
+    const paramsQuery = {
+        now: date.toISOString(),
+        algorithm: "NEAREST",
+        lat: latLng.lat,
+        long: latLng.lng
+    }
 
     return (
         <>
             <Header cartItems={cartItems} />
+            <Category paramsQuery={paramsQuery} filterCategory={filterCategory} CategoryId={categoryFilter} />
             <Query 
                 query={LOCATION} 
-                variables={{
-                    "now": date.toISOString(),
-                    "algorithm": "NEAREST",
-                    "lat": latLng.lat,
-                    "long": latLng.lng
-                }}
+                variables={paramsQuery}
             >
                 { buildProductPage }
             </Query>
