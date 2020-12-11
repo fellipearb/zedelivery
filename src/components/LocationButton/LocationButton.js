@@ -5,7 +5,7 @@ function LocationButton(props) {
     const { label, disabled } = props;
 
     return (
-        <LocationButtonStyle disabled={disabled}>{label}</LocationButtonStyle>
+        <LocationButtonStyle data-testid="LocationButton" disabled={disabled}>{label}</LocationButtonStyle>
     )
 }
 

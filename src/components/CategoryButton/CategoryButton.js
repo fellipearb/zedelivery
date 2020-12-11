@@ -9,6 +9,7 @@ function CategoryButton(props) {
         <CategoryButtonStyle 
             onClick={filterCategory.bind(this, id)}
             className={classActive}
+            data-testid="CategoryButton"
         >{label}</CategoryButtonStyle>
     )
 }

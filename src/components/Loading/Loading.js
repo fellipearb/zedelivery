@@ -3,7 +3,7 @@ import LoadingStyle from './LoadingStyle';
 
 function Loading() {
     return (
-        <LoadingStyle>
+        <LoadingStyle data-testid="Loading">
             <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </LoadingStyle>
     )
