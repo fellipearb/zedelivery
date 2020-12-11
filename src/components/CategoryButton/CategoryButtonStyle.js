@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Colors from '../../theme/Colors';
 
-export const CategoryButtonStyle = styled.button`
+const CategoryButtonStyle = styled.button`
     background: none;
     padding: 10px 20px;
     margin: 5px;

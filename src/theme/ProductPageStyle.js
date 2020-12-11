@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MediaQueries from './MediaQueries';
 
-export const ProductPageStyle = styled.div`
+const ProductPageStyle = styled.div`
     width: 100%;
     padding: 15px;
     
@@ -16,3 +16,5 @@ export const ProductPageStyle = styled.div`
         flex-wrap: wrap;
     }
 `;
+
+export default ProductPageStyle;

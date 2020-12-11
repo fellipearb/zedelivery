@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Colors from '../../theme/Colors';
-import MediaQueries from '../../theme/MediaQueries';
+import Colors from '../theme/Colors';
+import MediaQueries from '../theme/MediaQueries';
 
-export const StyleGetLocation = styled.main`
+const HomePageStyle = styled.main`
     height: 100vh;
     background: url(/images/banner.jpg) no-repeat;
     background-size: cover;
@@ -82,25 +82,6 @@ export const StyleGetLocation = styled.main`
             }
         }
 
-        .use-search {
-            width: 100%;
-            padding: 10px 15px;
-            background: ${Colors.primary};
-            color: ${Colors.tertiary};
-            border-radius: 5px;
-            margin-top: 15px;
-            border: none;
-
-            @media(${MediaQueries.desktop.minWidth}) {
-                width: 200px;
-                margin-top: 0;
-            }
-            
-            &:disabled {
-                opacity: .6;
-            }
-        }
-
         .autocomplete-dropdown-container {
             position: absolute;
             z-index: 1;
@@ -134,3 +115,5 @@ export const StyleGetLocation = styled.main`
         }
     }
 `;
+
+export default HomePageStyle;

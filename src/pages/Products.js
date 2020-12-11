@@ -5,7 +5,7 @@ import LOCATION from '../services/GetProductsLocationQuery';
 
 import Header from "../components/shared/Header/Header";
 import ProductList from '../components/ProductList/ProductList';
-import { ProductPageStyle } from '../theme/ProductPageStyle';
+import ProductPageStyle from '../theme/ProductPageStyle';
 import Footer from "../components/shared/Footer/Footer";
 import Loading from '../components/Loading/Loading';
 import EmptyState from '../components/EmptyState/EmptyState';
