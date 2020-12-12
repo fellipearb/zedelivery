@@ -9,12 +9,12 @@ describe('Given Categoy Button Component', () => {
         filterCategory: jest.fn()
     };
 
-    it("Renders button correctly", () => {
+    it("Renders category button correctly", () => {
         const { getByTestId } = render(<CategoryButton {...defaultProps}></CategoryButton>);
         expect(getByTestId('CategoryButton')).toBeTruthy();
     })
 
-    it("Renders button with text", () => {
+    it("Renders category button with text", () => {
         const { getByTestId } = render(<CategoryButton {...defaultProps}></CategoryButton>);
         expect(getByTestId('CategoryButton')).toHaveTextContent("click me please");
     })

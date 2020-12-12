@@ -3,8 +3,8 @@ import EmptyStateStyle from './EmptyStateStyle';
 
 function EmptyState() {
     return (
-        <EmptyStateStyle>
-            <p>Nenhum produto encontrado :(</p>
+        <EmptyStateStyle data-testid="EmptyState">
+            <p data-testid="EmptyStateText">Nenhum produto encontrado :(</p>
         </EmptyStateStyle>
     )
 }

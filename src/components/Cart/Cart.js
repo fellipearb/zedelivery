@@ -6,9 +6,9 @@ function Cart(props) {
     const { cartItems } = props;
     
     return (
-        <CartTag>
-            <span className="count">{cartItems.length}</span>
-            <FontAwesomeIcon icon="shopping-cart" className="icon" />
+        <CartTag data-testid="Cart">
+            <span className="count" data-testid="CartCount">{cartItems.length}</span>
+            <FontAwesomeIcon icon="shopping-cart" className="icon" data-testid="CartIcon" />
         </CartTag>
     )
 }

@@ -9,17 +9,17 @@ describe('Given Location Button Component', () => {
       disabled: true
   };
 
-  it("Renders button correctly", () => {
+  it("Renders location button correctly", () => {
     const { getByTestId } = render(<LocationButton {...defaultProps}></LocationButton>);
     expect(getByTestId('LocationButton')).toBeTruthy();
   })
 
-  it("Renders button with text", () => {
+  it("Renders location button with text", () => {
       const { getByTestId } = render(<LocationButton {...defaultProps}></LocationButton>);
       expect(getByTestId('LocationButton')).toHaveTextContent("click me please");
   })
 
-  it("Renders button disabled", () => {
+  it("Renders location button disabled", () => {
     const { getByTestId } = render(<LocationButton {...defaultProps}></LocationButton>);
     expect(getByTestId('LocationButton')).toHaveAttribute('disabled');
   })
