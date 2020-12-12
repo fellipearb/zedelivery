@@ -1,4 +1,4 @@
-# Hy, welcome to my test
+# Hi, welcome to my test
 
 This a simple project, to list products based in typed address on the home page.
 All the data is provided by the Zé Delivery's API.
