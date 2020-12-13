@@ -17,7 +17,6 @@ describe('Given EmptyState Component', () => {
     })
 
     it("Renders EmptyState with button", () => {
-        // const { getByTestId } = render(<EmptyState {...defaultProps} />);
         const tree = renderer
                         .create(
                             <Router>
