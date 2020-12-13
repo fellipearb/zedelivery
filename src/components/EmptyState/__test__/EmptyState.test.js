@@ -8,5 +8,6 @@ describe('Given EmptyState Component', () => {
         const { getByTestId } = render(<EmptyState />);
         expect(getByTestId('EmptyState')).toBeTruthy();
         expect(getByTestId('EmptyStateText')).toBeTruthy();
+        expect(getByTestId('EmptyStateButton')).toBeTruthy();
     })
 })

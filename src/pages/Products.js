@@ -40,7 +40,7 @@ function Products() {
     const buildProductPage = ({ loading, error, data }) => {
         if (loading) return <Loading />;
         if (error) return <EmptyState />;
-        if (!data || !data.pocSearch.length) return <EmptyState />;
+        if (!data || !data.pocSearch.length) return <EmptyState withGoBack={true} />;
     
         return (
             <>
