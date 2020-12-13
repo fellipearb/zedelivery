@@ -36,7 +36,7 @@ function Category(props) {
     return (
         <>
             <CategoryStyle>
-                <p>Qual a pedida pra hoje?</p>
+                <p>Qual a pedida para hoje?</p>
         
                 <div className="categories">
                     <Query 
