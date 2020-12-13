@@ -36,7 +36,7 @@ export const ProductCardStyle = styled.div`
     .name {
         color: ${Colors.primary};
         font-size: 14px;
-        height: 30px;
+        height: 63px;
         margin: 15px 0;
     }
 
